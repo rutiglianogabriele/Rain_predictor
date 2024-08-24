@@ -29,6 +29,8 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import log_loss
 from sklearn.metrics import confusion_matrix, accuracy_score
 import sklearn.metrics as metrics
+from sklearn.metrics import classification_report
+import itertools
 
 # Defining a function to generate a confusion matrix with only passying the predictions and the actual data
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
@@ -101,7 +103,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_
 KNN
 ''' 
 # Generate the KNN model
-KNN = KNeighborsClassifier(n_neighbors=4)
+KNN = KNeighborsClassifier(n_neighbors = 3)
 
 # Train the model using the training data
 KNN.fit(x_train, y_train)
@@ -122,36 +124,127 @@ report = pd.DataFrame({
 
 print(report)
 
-# Lets print the confusion matrix
-generate_confusion_matrix(y_hat, y_test) 
+# Compute confusion matrix
+cnf_matrix = confusion_matrix(y_test, y_hat)
+np.set_printoptions(precision=2)
+
+print (classification_report(y_test, y_hat))
+
+# Plot non-normalized confusion matrix
+plt.figure()
+plot_confusion_matrix(cnf_matrix, classes=['No','Yes'],normalize= False,  title='Confusion matrix')
 
 '''
 Decision Tree
 ''' 
-# Example data: true labels and predicted labels
-y_true = [0, 1, 0, 1, 0, 1, 1, 0, 2, 2]
-y_pred = [0, 0, 0, 1, 0, 1, 1, 1, 2, 1]
+# Create the Decision Tree model
+Tree = DecisionTreeClassifier(random_state=10)  # You can set a random_state for reproducibility
 
-# Generate the confusion matrix
-cm = confusion_matrix(y_true, y_pred)
+# Train the model using the training data
+Tree.fit(x_train, y_train)
 
-# Plotting the confusion matrix
-plt.figure(figsize=(8, 6))
-sb.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False, 
-            xticklabels=[f'Predicted {i}' for i in range(cm.shape[1])], 
-            yticklabels=[f'Actual {i}' for i in range(cm.shape[0])])
-plt.xlabel('Predicted')
-plt.ylabel('Actual')
-plt.title('Confusion Matrix')
-plt.show()
+# Lets make predictions
+y_hat = Tree.predict(x_test)
+
+# Lets have a look at some metrics
+Tree_Accuracy_Score = accuracy_score(y_test, y_hat)
+Tree_JaccardIndex = jaccard_score(y_test, y_hat)
+Tree_F1_Score = f1_score(y_test, y_hat)
+
+# Create a DataFrame to display the metrics
+report = pd.DataFrame({
+    'Metric': ['Accuracy Score', 'Jaccard Index', 'F1 Score'],
+    'Value': [Tree_Accuracy_Score, Tree_JaccardIndex, Tree_F1_Score]
+})
+
+print(report)
+
+# Create a DataFrame to display the metrics
+report = pd.DataFrame({
+    'Metric': ['Accuracy Score', 'Jaccard Index', 'F1 Score'],
+    'Value': [Tree_Accuracy_Score, Tree_JaccardIndex, Tree_F1_Score]
+})
+
+# Compute confusion matrix
+cnf_matrix = confusion_matrix(y_test, y_hat)
+np.set_printoptions(precision=2)
+
+print (classification_report(y_test, y_hat))
+
+# Plot non-normalized confusion matrix
+plt.figure()
+plot_confusion_matrix(cnf_matrix, classes=['No','Yes'],normalize= False,  title='Confusion matrix')
 
 
 '''
 Logistic regression
 ''' 
+LR = LogisticRegression(solver='liblinear', random_state=1)
 
+# Train the model using the training data
+LR.fit(x_train, y_train)
+
+
+y_hat = LR.predict(x_test)
+
+predict_proba = LR.predict_proba(x_test)
+
+LR_Accuracy_Score = accuracy_score(y_test, y_hat)
+LR_JaccardIndex = jaccard_score(y_test, y_hat)
+LR_F1_Score = f1_score(y_test, y_hat)
+LR_Log_Loss = log_loss(y_test, predict_proba)
+
+# Create a DataFrame to display the metrics
+report = pd.DataFrame({
+    'Metric': ['Accuracy Score', 'Jaccard Index', 'F1 Score', 'Log Loss'],
+    'Value': [LR_Accuracy_Score, LR_JaccardIndex, LR_Log_Loss, LR_Log_Loss]
+})
+
+print(report)
+
+# Compute confusion matrix
+cnf_matrix = confusion_matrix(y_test, y_hat)
+np.set_printoptions(precision=2)
+
+print (classification_report(y_test, y_hat))
+
+# Plot non-normalized confusion matrix
+plt.figure()
+plot_confusion_matrix(cnf_matrix, classes=['No','Yes'],normalize= False,  title='Confusion matrix')
 
 
 '''
 SVM
 ''' 
+SVM = svm.SVC(kernel='rbf')
+
+# Train the model using the training data
+SVM.fit(x_train, y_train)
+
+y_hat = SVM.predict(x_test)
+
+SVM_Accuracy_Score = accuracy_score(y_test, y_hat)
+SVM_JaccardIndex = jaccard_score(y_test, y_hat)
+SVM_F1_Score = f1_score(y_test, y_hat)
+
+# Create a DataFrame to display the metrics
+report = pd.DataFrame({
+    'Metric': ['Accuracy Score', 'Jaccard Index', 'F1 Score'],
+    'Value': [SVM_Accuracy_Score, SVM_JaccardIndex, SVM_F1_Score]
+})
+
+print(report)
+
+# Compute confusion matrix
+cnf_matrix = confusion_matrix(y_test, y_hat)
+np.set_printoptions(precision=2)
+
+print (classification_report(y_test, y_hat))
+
+# Plot non-normalized confusion matrix
+plt.figure()
+plot_confusion_matrix(cnf_matrix, classes=['No','Yes'],normalize= False,  title='Confusion matferix')
+
+
+
+

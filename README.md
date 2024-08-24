@@ -13,6 +13,7 @@ The models that will be employed are:
 ## Table of contents
 * [About the Dataset](#about-the-Dataset)
 * [How to Run It](#how-to-run-it)
+* [Results](#results)
 
 # About the Dataset
 
@@ -52,3 +53,8 @@ Column definitions were gathered from [http://www.bom.gov.au/climate/dwo/IDCJDW0
 
 
 # How to Run It
+
+To run this project you can simply clone clone it and run it with an interpreter (e.g. Spyder).
+
+# Results
+

@@ -57,4 +57,13 @@ Column definitions were gathered from [http://www.bom.gov.au/climate/dwo/IDCJDW0
 To run this project you can simply clone clone it and run it with an interpreter (e.g. Spyder).
 
 # Results
--- Work In Progress --
+The four deployed models yelded the following results:
+
+![image](https://github.com/user-attachments/assets/0cdeb48f-779d-4e48-b8a2-32005da6e22b)
+![image](https://github.com/user-attachments/assets/c2026a67-7258-4160-bfed-8b17c519bfa3)
+![image](https://github.com/user-attachments/assets/235132bd-4d5e-4faa-82c3-7bf2334bd1fb)
+![image](https://github.com/user-attachments/assets/062d3e64-cc1f-4a11-b25f-e76b0d11d918)
+
+
+
+

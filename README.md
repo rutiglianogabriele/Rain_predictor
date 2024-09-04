@@ -57,7 +57,7 @@ Column definitions were gathered from [http://www.bom.gov.au/climate/dwo/IDCJDW0
 To run this project you can simply clone clone it and run it with an interpreter (e.g. Spyder).
 
 # Results
-The four deployed models yelded the following results:
+The results of the project are presented through the confusion matrices of the four different models.
 
 ![image](https://github.com/user-attachments/assets/0cdeb48f-779d-4e48-b8a2-32005da6e22b)
 ![image](https://github.com/user-attachments/assets/c2026a67-7258-4160-bfed-8b17c519bfa3)  

@@ -64,6 +64,8 @@ The results of the project are presented through the confusion matrices of the f
 ![image](https://github.com/user-attachments/assets/235132bd-4d5e-4faa-82c3-7bf2334bd1fb)
 ![image](https://github.com/user-attachments/assets/062d3e64-cc1f-4a11-b25f-e76b0d11d918)
 
+Overall, while all four models demonstrate reasonable predictive capabilities, the Logistic Regression (LR) model stands out as the most effective in accurately forecasting the likelihood of rain. It consistently delivers the best balance between true positives and true negatives, indicating strong performance in both predicting rainy and non-rainy days.  
+On the other hand, the fourth model, even after extensive tuning, has not yielded satisfactory results. Alarmingly, this model seems to fail at making varied predictions, as it consistently outputs the same prediction for every instance, effectively rendering it unusable for accurate weather forecasting. This suggests a critical issue, potentially with the model's implementation or underlying logic, that needs to be addressed.
 
 
 

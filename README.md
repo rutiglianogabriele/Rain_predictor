@@ -68,6 +68,8 @@ Overall, while all four models demonstrate reasonable predictive capabilities, t
   
 On the other hand, the fourth model, even after extensive tuning, has not yielded satisfactory results. Alarmingly, this model seems to fail at making varied predictions, as it consistently outputs the same prediction for every instance, effectively rendering it unusable for accurate weather forecasting. This suggests a critical issue, potentially with the model's implementation or underlying logic, that needs to be addressed.
 
+Here is an overview of the performance evaluation metrics for the four models:
+
 | Model                 | Accuracy Score   | F1-Score   | Jaccard Index   | Log Loss   |
 | --------------------- | ---------------- | ---------- | --------------- | ---------- |
 | KNN                   | 0.822            | 0.650      | 0.482           | /          |
